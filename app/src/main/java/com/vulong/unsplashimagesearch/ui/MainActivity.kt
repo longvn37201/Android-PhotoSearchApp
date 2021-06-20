@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -175,10 +177,8 @@ class MainActivity : AppCompatActivity(), UnsplashPhotoAdapter.OnItemRecyclerVie
 
         val searchItem = menu?.findItem(R.id.action_search)
         val searchView = searchItem?.actionView as SearchView
-
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(text: String?): Boolean {
-
 
                 val inputMethodManager: InputMethodManager = getSystemService(
                     INPUT_METHOD_SERVICE
@@ -195,12 +195,15 @@ class MainActivity : AppCompatActivity(), UnsplashPhotoAdapter.OnItemRecyclerVie
                 loadMore()
 
                 return true
+
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 return true
             }
+
         })
+
         return super.onCreateOptionsMenu(menu)
     }
 }
